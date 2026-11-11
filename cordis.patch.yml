@@ -1,0 +1,150 @@
+# Your patch layer for this dsh profile, applied after every bundle layer:
+# a top-level YAML array of loader patch entries (id-targeted config
+# overrides, disables, and insert lists; `!!js` expressions allowed).
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: deepseek-account
+    model: deepseek-flash
+    reasoningEffort: medium
+- id: ui-settings-account
+  name: "@deepseek-ai/dsh-client-ui-settings-account"
+  config:
+    version: 1
+    step: done
+    purpose: office
+    process: compact
+    completion: completed
+    usage: compact
+    developerTools: false
+- id: ui-chat
+  name: "@deepseek-ai/dsh-client-ui-chat"
+  config:
+    transcriptView: compact
+    performanceUsage: compact
+- id: ui-settings
+  name: "@deepseek-ai/dsh-client-ui-settings"
+  config:
+    enabled: false
+- id: permission
+  name: "@deepseek-ai/dsh-permission-presets"
+  config:
+    presets:
+      read-only:
+        sandbox: read-only
+        approval: ask
+      workspace-write:
+        sandbox: workspace-write
+        approval: ask
+      danger-full-access:
+        sandbox: danger-full-access
+        approval: never
+    defaultPreset: danger-full-access
+- id: ui-theme
+  name: "@deepseek-ai/dsh-client-ui-theme"
+  config:
+    preference: dark
+- id: ui-skin-maid-atelier
+  disabled: true
+- id: vision-router
+  name: dsh-vision-router
+  config:
+    progressiveTools: false
+    onboardingSeen: true
+    structuredVisionBootstrap: true
+    freeCloudFirst: true
+# 启动动画插件：只保留开机片头，关掉它的常驻背景视频层，
+# 免得盖住 dsh-plugin-wallpaper-engine 的壁纸（壁纸层在 body z-index:-2）。
+- id: dsh-startup-animation
+  name: dsh-startup-animation
+  config:
+    background: false
+- id: better-sidebar
+  name: dsh-better-sidebar
+  config:
+    agentOpenTools: true
+- id: roost
+  disabled: true
+- id: preset-roost-private
+  disabled: true
+- id: preset-roost-social
+  disabled: true
+- id: browserskill
+  name: "@wxg-prc-cpg/browser-skill-dsh-plugin"
+  config:
+    bskPath: "D:/bsk/bsk.exe"
+    defaultTimeoutMs: 120000
+    maxSessions: 5
+    observationEnabled: true
+    thumbnailIntervalMs: 1500
+    idleIntervalMs: 8000
+    lazyTools: true
+- id: better-sidebar
+  disabled: false
+- id: image-hub
+  disabled: false
+- id: napcat-keeper
+  disabled: false
+- id: bili-native
+  disabled: false
+- id: bili-compaction-gate
+  disabled: false
+- id: notify-me
+  disabled: false
+- id: dsh-ops-mode-minimal
+  disabled: false
+- id: dsh-ops-mode-standard
+  disabled: false
+- id: dsh-ops-mode-ptc
+  disabled: false
+- id: dsh-ops-mode-cordis
+  disabled: false
+- id: dsh-ops-discovery
+  disabled: false
+- id: voice-mode
+  disabled: false
+- id: dsh-whale-widget
+  disabled: false
+- id: wallpaper-engine
+  disabled: false
+- id: wallpaper-engine-about-notice
+  disabled: false
+- id: wallpaper-engine-mascot-avatar
+  disabled: false
+- id: wallpaper-engine-media-bridge
+  disabled: false
+- id: wallpaper-engine-pet-link
+  disabled: false
+- id: wallpaper-engine-fx
+  disabled: false
+- id: wallpaper-engine-parallax
+  disabled: false
+- id: wallpaper-engine-fonts
+  disabled: false
+- id: dsh-startup-animation
+  disabled: false
+- id: persona-dafeiyu
+  disabled: false
+- id: dsh-unlag
+  disabled: false
+- id: suzu-memory
+  name: dsh-suzu-memory
+  config:
+    enabled: true
+    automaticMaintenance: true
+    offPeakOnly: true
+    offPeakSchedule:
+      timeZone: Asia/Shanghai
+      weekends: true
+      windows:
+        - start: 00:00
+          end: 09:00
+        - start: 12:00
+          end: 14:00
+        - start: 18:00
+          end: 24:00
+    batchedCompaction: true
+    compactionBatchCharacters: 0
+    compactionConcurrency: 3
+- id: dsh-mneme
+  disabled: false
